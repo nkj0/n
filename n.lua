@@ -1,4 +1,4 @@
-redis = require('red') 
+redis = require('redis') 
 https = require ("ssl.https") 
 serpent = dofile("./lib/sp.lua") 
 json = dofile("./lib/js.lua") 
