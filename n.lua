@@ -68,7 +68,7 @@ token = database:get(id_server..":token")
 SUDO = database:get(id_server..":SUDO:ID")
 install = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
-file = io.open("n", "w")  
+file = io.open("n.lua", "w")  
 file:write([[
 #!/usr/bin/env bash
 cd $HOME/n
