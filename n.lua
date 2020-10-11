@@ -1,8 +1,8 @@
-redis = require('redis') 
+redis = require('red') 
 https = require ("ssl.https") 
-serpent = dofile("./library/serpent.lua") 
-json = dofile("./library/JSON.lua") 
-JSON  = dofile("./library/dkjson.lua")
+serpent = dofile("./lib/sp.lua") 
+json = dofile("./lib/js.lua") 
+JSON  = dofile("./lib/dkj.lua")
 URL = require('socket.url')  
 utf8 = require ('lua-utf8') 
 database = redis.connect('127.0.0.1', 6379) 
@@ -941,8 +941,5 @@ if text == 'تحديث' or text == 'تحديث الملفات ⁦♻️⁩' and 
 dofile('n.lua')  
 send(msg.chat_id_, msg.id_, '◍ تم تحديث جميع الملفات') 
 end 
-
-
--- 😂😌 جدعنه مني
 end
 end
