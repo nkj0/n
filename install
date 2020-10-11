@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd $HOME/Leader
+cd $HOME/n
 install() {
 rm -rf $HOME/.telegram-cli
 apt update
