@@ -311,7 +311,7 @@ end
 
 
 
-function Getf(msg)
+function GetFile_Bot(msg)
 local list = database:smembers(bot_id..'Chek:Groups') 
 local t = '{"BOT_ID": '..bot_id..',"GP_BOT":{'  
 for k,v in pairs(list) do   
@@ -396,7 +396,7 @@ file:close()
 return file_path, code 
 end 
 
-function Addf(msg,chat,ID_FILE,File_Name)
+function AddFile_Bot(msg,chat,ID_FILE,File_Name)
 if File_Name:match('.json') then
 if tonumber(File_Name:match('(%d+)')) ~= tonumber(bot_id) then 
 send(chat,msg.id_,"◍  ملف نسخه ليس لهاذا البوت")
@@ -789,9 +789,6 @@ if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 end
 
-if text == 'تحديث السورس' and SudoBot(msg) then 
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
@@ -799,21 +796,7 @@ send(msg.chat_id_, msg.id_,'◍ لا تستطيع استخدام البوت \n �
 end
 return false
 end
-os.execute('rm -rf n.lua')
-os.execute('wget https://raw.githubusercontent.com/nkj0/n/master/n.lua')
-send(msg.chat_id_, msg.id_,'◍ تم تحديث السورس \n◍ لديك اخر اصدار لسورس الزعامه\n◍ الاصدار » { 1.2v}')
-dofile('n.lua')  
-end
-
-
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'◍ لا تستطيع استخدام البوت \n ◍ يرجى الاشتراك بالقناه اولا \n ◍ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
-os.execute('rm -rf n.lua')
+os.execute('rm -rf n.')
 os.execute('wget https://raw.githubusercontent.com/nkj0/n/master/n.lua')
 send(msg.chat_id_, msg.id_,'◍ تم تحديث السورس \n◍ لديك اخر اصدار لسورس الزعامه\n◍ الاصدار » { 1.2v}')
 dofile('n.lua')  
@@ -835,7 +818,7 @@ function by_reply(extra, result, success)
 if result.content_.document_ then 
 local ID_FILE = result.content_.document_.document_.persistent_id_ 
 local File_Name = result.content_.document_.file_name_
-Addf(msg,msg.chat_id_,ID_FILE,File_Name)
+AddFile_Bot(msg,msg.chat_id_,ID_FILE,File_Name)
 end   
 end
 tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonumber(msg.reply_to_message_id_) }, by_reply, nil)
@@ -852,10 +835,10 @@ send(msg.chat_id_, msg.id_,'◍ لا تستطيع استخدام البوت \n �
 end
 return false
 end
-Getf(msg)
+GetFile_Bot(msg)
 end
 
--- File
+-- File_Bot
 if text == 'الملفات' and SudoBot(msg) then
 t = '◍ ملفات السورس الزعامه ↓\n ≪━━━━━━━━━━━━━≫ \n'
 i = 0
@@ -901,8 +884,8 @@ end
 if text and text:match("^(تعطيل) (.*)(.lua)$") and SudoBot(msg) then
 local name_t = {string.match(text, "^(تعطيل) (.*)(.lua)$")}
 local file = name_t[2]..'.lua'
-local f = io.open("f/"..file,"r")
-if f then
+local file_bot = io.open("f/"..file,"r")
+if file_bot then
 io.close(f)
 t = "◍ الملف » "..file.."\n◍ تم تعطيل ملف \n"
 else
@@ -922,8 +905,8 @@ end
 if text and text:match("^(تفعيل) (.*)(.lua)$") and SudoBot(msg) then
 local name_t = {string.match(text, "^(تفعيل) (.*)(.lua)$")}
 local file = name_t[2]..'.lua'
-local f = io.open("f/"..file,"r")
-if f then
+local file_bot = io.open("f/"..file,"r")
+if file_bot then
 io.close(f)
 t = "◍ بالتاكيد تم تفعيل ملف → "..file.." \n"
 else
@@ -948,7 +931,7 @@ send(msg.chat_id_,msg.id_,"◍ تم مسح الملفات")
 return false
 end
 
-if text == 'تحديث السورس 📥' or text == 'تحديث السورس' and SudoBot(msg) then 
+if text == 'تحديث السورس 📥' or text ==' تحديث السورس' and SudoBot(msg) then 
 os.execute('rm -rf n.lua')
 os.execute('wget https://raw.githubusercontent.com/nkj0/n/master/n.lua')
 send(msg.chat_id_, msg.id_,'◍ تم تحديث السورس \n◍ لديك اخر اصدار لسورس الزعامه\n◍ الاصدار » { 1.2v}')
